@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<style>
+		html, body{
+	      width: 100%;
+	      height: 100%;
+	      margin: 0;
+	    }
+		.bar{
+		  background-color: blue;
+	      display: block;
+	      border: 1px solid white;
+	      box-sizing: border-box;
+		 }
+	</style>
+	
+	<body>
+	</body>
+
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script>
+	var bars = d3.select('body').selectAll('.bar');
+	function update (){
+		var n = Math.round(Math.random() * 100);
+		var data = d3.range(n);
+		bars = bars.data(data);
+		bars.enter().append('div').attr('class','bar')
+
+		bars.exit().remove()
+
+		bars.style('width',function(d){ return d / (n-1) * 100 + '%' })
+			.style('height', 100 / n + '%');
+
+	}
+
+
+
+
+	setInterval(update,800);
+		
+	</script>
+</html>

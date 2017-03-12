@@ -17,9 +17,9 @@
 		<div class='bar'></div>
 	</body>
 	<script type="text/javascript">
-		var data = [10,20,30];
+		var data = [10,20];
 		d3.selectAll('div.bar').data(data).style('width', function(d){
 			return d + '%';
-		})
+		}).exit().remove()
 	</script>
 </html>
