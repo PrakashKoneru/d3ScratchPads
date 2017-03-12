@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+       <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	</head>
+	<style>
+		path {
+			stroke:black;
+			stroke-width:3px;
+			fill:none;
+		}
+	</style>
+	
+	<body>
+		
+	</body>
+	<script type="text/javascript">
+	//Creating a line using Line Generator
+	var lineData = [[154, 14], [35, 172], [251, 127], [31, 58], [157, 205], [154, 14]];
+	var lineGenerator = d3.svg.line()
+				.x(function(d){ return d[0]})
+				.y(function(d){ return d[1]});
+	d3.select('body').append('svg').append('path').datum(lineData).attr('d', lineGenerator)
+	</script>
+</html>
