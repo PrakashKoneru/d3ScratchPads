@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+       <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	</head>
+	<style>
+      path { stroke: white; stroke-width: 2; fill: steelblue;}
+		.plot{ fill: none; stroke: #aec7e8; stroke-width: 2;}
+		circle{ fill: steelblue; stroke: white;}
+		svg { width:1000px; height: 1000px;}
+
+	</style>
+	
+	<body>
+		
+	</body>
+	<script type="text/javascript">
+	//Creating a chart using area generator
+	var svg = d3.select('body').append('svg');
+	var area = d3.svg.area()
+				.y0(200)
+				.y1(function(d) {return d.y})
+				.x(function(d) {return d.x})
+	var data = d3.range(100).map(function(){ return Math.random() * 30 + 0 })
+							.map(function(d, i){ return { x: i * 10, y: d }});
+		console.log(data);
+		svg.append('path').datum(data).attr('d', area);
+
+	var line = d3.svg.line()
+				.x(function(d) {return d.x})
+				.y(function(d) {return d.y})
+		svg.append('path').datum(data).attr('d', line).attr('class','plot')
+
+		svg.selectAll('circle').data(data).enter().append('circle')
+			.attr('cx', function(d){return d.x})
+			.attr('cy', function(d) {return d.y})
+			.attr('r',3)
+
+	</script>
+</html>
